@@ -1,0 +1,527 @@
+{
+	"info": {
+		"_postman_id": "rest-client-api-collection",
+		"name": "RestClient API Collection",
+		"description": "Complete collection for testing RestClient implementation with external API calls",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET Requests",
+			"item": [
+				{
+					"name": "Get All Resources",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/external/resources",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"external",
+								"resources"
+							]
+						},
+						"description": "Retrieves all resources from the external API"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Resource by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/external/resources/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"external",
+								"resources",
+								"1"
+							]
+						},
+						"description": "Retrieves a single resource by its ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Resources by User ID (Query Param)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/external/resources/search?userId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"external",
+								"resources",
+								"search"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "1",
+									"description": "User ID to filter resources"
+								}
+							]
+						},
+						"description": "Retrieves resources filtered by user ID using query parameters"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Resource with Custom Headers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Custom-Header",
+								"value": "CustomValue",
+								"type": "text"
+							},
+							{
+								"key": "X-Another-Header",
+								"value": "AnotherValue",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/external/resources/1/with-headers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"external",
+								"resources",
+								"1",
+								"with-headers"
+							]
+						},
+						"description": "Retrieves a resource with custom headers passed to the external API"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Resource with Status Handling",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/external/resources/1/with-status-handling",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"external",
+								"resources",
+								"1",
+								"with-status-handling"
+							]
+						},
+						"description": "Retrieves a resource with custom status code handling (404, 5xx)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Resource with Full Response",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/external/resources/1/full-response",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"external",
+								"resources",
+								"1",
+								"full-response"
+							]
+						},
+						"description": "Retrieves a resource with full response details (status, headers, body)"
+					},
+					"response": []
+				}
+			],
+			"description": "Collection of GET requests demonstrating various RestClient features"
+		},
+		{
+			"name": "POST Requests",
+			"item": [
+				{
+					"name": "Create New Resource (JSON)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"message\": \"This is a test message from Postman\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/external/resources",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"external",
+								"resources"
+							]
+						},
+						"description": "Creates a new resource with JSON body"
+					},
+					"response": []
+				},
+				{
+					"name": "Submit Form Data",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Jane Smith",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "jane.smith@example.com",
+									"type": "text"
+								},
+								{
+									"key": "message",
+									"value": "Form data submission test",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/external/resources/form",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"external",
+								"resources",
+								"form"
+							]
+						},
+						"description": "Submits form-encoded data to the external API"
+					},
+					"response": []
+				}
+			],
+			"description": "Collection of POST requests for creating resources"
+		},
+		{
+			"name": "PUT Requests",
+			"item": [
+				{
+					"name": "Update Resource (Full Update)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Doe Updated\",\n    \"email\": \"john.updated@example.com\",\n    \"message\": \"This is an updated message\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/external/resources/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"external",
+								"resources",
+								"1"
+							]
+						},
+						"description": "Fully updates an existing resource (all fields replaced)"
+					},
+					"response": []
+				}
+			],
+			"description": "Collection of PUT requests for full resource updates"
+		},
+		{
+			"name": "PATCH Requests",
+			"item": [
+				{
+					"name": "Partial Update Resource",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Partially Updated Name\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/external/resources/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"external",
+								"resources",
+								"1"
+							]
+						},
+						"description": "Partially updates a resource (only specified fields updated)"
+					},
+					"response": []
+				},
+				{
+					"name": "Partial Update - Multiple Fields",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Updated Name\",\n    \"email\": \"newemail@example.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/external/resources/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"external",
+								"resources",
+								"2"
+							]
+						},
+						"description": "Partially updates multiple fields of a resource"
+					},
+					"response": []
+				}
+			],
+			"description": "Collection of PATCH requests for partial resource updates"
+		},
+		{
+			"name": "DELETE Requests",
+			"item": [
+				{
+					"name": "Delete Resource",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/external/resources/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"external",
+								"resources",
+								"1"
+							]
+						},
+						"description": "Deletes a resource by ID (returns 204 No Content)"
+					},
+					"response": []
+				}
+			],
+			"description": "Collection of DELETE requests for removing resources"
+		},
+		{
+			"name": "Error Handling Tests",
+			"item": [
+				{
+					"name": "Get Non-Existent Resource (404 Test)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/external/resources/999999",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"external",
+								"resources",
+								"999999"
+							]
+						},
+						"description": "Tests error handling for non-existent resource (should handle gracefully)"
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid Request Body (400 Test)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"invalid\": \"data\",\n    \"malformed\": \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/external/resources",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"external",
+								"resources"
+							]
+						},
+						"description": "Tests error handling for invalid JSON body"
+					},
+					"response": []
+				}
+			],
+			"description": "Tests for error handling and edge cases"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "apiVersion",
+			"value": "v1",
+			"type": "string"
+		}
+	]
+}

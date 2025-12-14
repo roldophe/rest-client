@@ -1,0 +1,56 @@
+### Get all resources
+GET http://localhost:8080/api/v1/external/resources
+
+### Get resource by ID
+GET http://localhost:8080/api/v1/external/resources/1
+
+### Get resources by user ID
+GET http://localhost:8080/api/v1/external/resources/search?userId=1
+
+### Create new resource
+POST http://localhost:8080/api/v1/external/resources
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john.doe@example.com",
+  "message": "This is a test message"
+}
+
+### Update resource
+PUT http://localhost:8080/api/v1/external/resources/1
+Content-Type: application/json
+
+{
+  "name": "John Doe Updated",
+  "email": "john.updated@example.com",
+  "message": "This is an updated message"
+}
+
+### Partial update resource
+PATCH http://localhost:8080/api/v1/external/resources/1
+Content-Type: application/json
+
+{
+  "name": "John Partially Updated"
+}
+
+### Delete resource
+DELETE http://localhost:8080/api/v1/external/resources/1
+
+### Get resource with custom headers
+GET http://localhost:8080/api/v1/external/resources/1/with-headers
+X-Custom-Header: CustomValue
+X-Another-Header: AnotherValue
+
+### Submit form data
+POST http://localhost:8080/api/v1/external/resources/form
+Content-Type: application/x-www-form-urlencoded
+
+name=John&email=john@example.com&message=Form data test
+
+### Get resource with status handling
+GET http://localhost:8080/api/v1/external/resources/1/with-status-handling
+
+### Get resource with full response
+GET http://localhost:8080/api/v1/external/resources/1/full-response
